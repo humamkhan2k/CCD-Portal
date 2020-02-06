@@ -9,7 +9,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- Custom Theme files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{% static 'nav.css' %}" rel="stylesheet" type="text/css" media="all" />
     <!-- //Custom Theme files -->
     <!-- web font -->
     <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -19,12 +21,12 @@
 
     <header>
       <h1 align="center">CCD PORTAL</h1>
-      {% if user.is_authenticated %}
+      <!--{% if user.is_authenticated %}
         <a href="{% url 'login' %}">logout</a>
       {% else %}
         <a href="{% url 'login' %}">login</a> / <a href="{% url 'signup' %}">Sign Up</a>
       {% endif %}
-      <hr>
+      <hr>-->
     </header>
     <main>
       {% block content %}
