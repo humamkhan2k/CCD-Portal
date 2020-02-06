@@ -11,6 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarToggle">
         <div class="navbar-nav mr-auto">
          
+<<<<<<< HEAD
           <!--<a class="navbar-brand mr-4" data-toggle="modal" href="#modalAnounce" data-target="#modalAnounce">Add an Anouncement</a>-->
         <a class="navbar-brand mr-4" href="#" data-toggle="modal" data-target="#myModal">
           Add an Anouncement
@@ -39,6 +40,19 @@
               
             </div>
           </div>
+=======
+          <a class="navbar-brand mr-4" href="#">Add an Anouncement</a>
+          <a class="navbar-brand mr-4" href="#">Students List</a>
+        </div>
+        <div class="navbar-nav navbar-middle">
+        <input type="text" placeholder="Search..">
+        </div>
+        <!-- Navbar Right Side -->
+        <div class="navbar-nav navbar-right">
+          <a class="navbar-brand mr-4" href="#">{{ user.username }}</a>
+          <a class="navbar-brand mr-4" href="./">|</a>
+          <a class="navbar-brand mr-4" href="{% url 'login' %}">Logout</a>
+>>>>>>> 0d9b6b905d159c99044e2bfa40b3be5f8532442d
         </div>
         
 
@@ -54,4 +68,19 @@
   </nav>
 </header>
   <h2>Welcome, {{ user.username }}!</h2>
+  <br>
+  <br>
+
+  <table>
+  <tr>
+    <th>POC Name</th>
+    <th>Company Name</th>
+    <th class="big">Announcements</th>
+    <th class="small">Anouncement Time</th>
+  </tr>
+  
+
+
+</table>
+
 {% endblock %}
