@@ -2,7 +2,14 @@
 
 {% block content %}
   <h2>Sign up</h2>
-  <form method="post">
+
+  <!-- main -->
+  <div class="main-w3layouts wrapper">
+    <h1>Welcome to D-Day Portal</h1>
+    <div class="main-agileinfo">
+      <div class="agileits-top">
+        
+      <form method="post">
     {% csrf_token %}
     {% for field in form %}
       <p>
@@ -14,8 +21,30 @@
         {% endfor %}
       </p>
     {% endfor %}
-    <button type="submit">Sign up</button>
+    <input type="submit" value="Sign Up">
   </form>
+
+        <p>Don't have an Account? <a href="{% url 'signup' %}"> SignUp Now!</a></p>
+      </div>
+    </div>
+    
+    <ul class="colorlib-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <!-- //main -->
+
+
+  
 {% endblock %}
 
 
