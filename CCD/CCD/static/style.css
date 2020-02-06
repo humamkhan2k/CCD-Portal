@@ -127,11 +127,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     content: '';
                                     content: none;
                                 }
-                                
+                               /* 
                                 table {
                                     border-collapse: collapse;
                                     border-spacing: 0;
-                                }
+                                } */
                                 /*-- start editing from here --*/
                                 
                                 a {
