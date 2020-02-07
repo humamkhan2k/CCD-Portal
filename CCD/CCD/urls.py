@@ -16,10 +16,13 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib.auth.views import LoginView, LogoutView
 from CCD.main import views as core_views
+from django.urls import path
 
-
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^logout/$', LogoutView.as_view(template_name= 'login.html'), name='logout'),
