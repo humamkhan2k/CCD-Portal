@@ -8,7 +8,9 @@
 
   <!-- main -->
   <div class="main-w3layouts wrapper">
-    <h1>Welcome to D-Day Portal</h1>
+    <!--<h1>Welcome to D-Day Portal</h1>-->
+    {% load static%}
+    <img src="{% static 'IITGlogo.gif' %}" alt="IITG Logo" style="width:10%;" >
     <div class="main-agileinfo">
       <div class="agileits-top">
         
@@ -31,11 +33,11 @@
     <input type="submit" value="Login">
   </form>
 
-        <p>Don't have an Account? <a href="{% url 'signup' %}"> SignUp Now!</a></p>
+        <p >Don't have an Account? <a href="{% url 'signup' %}"> SignUp Now!</a></p>
       </div>
     </div>
     
-    <ul class="colorlib-bubbles">
+    <!--<ul class="colorlib-bubbles">
       <li></li>
       <li></li>
       <li></li>
@@ -46,7 +48,7 @@
       <li></li>
       <li></li>
       <li></li>
-    </ul>
+    </ul>-->
   </div>
   <!-- //main -->
 
