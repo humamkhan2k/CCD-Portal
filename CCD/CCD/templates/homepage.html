@@ -1,0 +1,23 @@
+{% extends 'header.html' %}
+
+{% block content %}
+  <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+          <div class="navbar-nav navbar-right">
+          <a class="navbar-brand mr-4" href="{% url 'login' %}">Login</a>
+          </div>
+        </nav>
+       
+      </header>
+      <br><br>
+      <h1 align="center"> Students' List </h1>
+      <table>
+        <tr>
+          <th>Student Name</th>
+          <th>Roll Number</th>
+          <th>Company Call</th>
+          <th class="small">Call Time</th>
+        </tr> 
+      </table> 
+
+{% endblock %}          

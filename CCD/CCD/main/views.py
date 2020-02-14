@@ -13,12 +13,15 @@ from django.views.decorators.cache import cache_control
 
 @login_required
 def home(request):
+    return render(request, 'homepage.html')
+
+def portal(request):
     return render(request, 'home.html')
 
 
 def signup(request):
     if request.method == 'POST':
-        user_form = UserForm(request.POST)
+        user_formpage = UserForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
