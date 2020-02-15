@@ -26,7 +26,9 @@ urlpatterns = [
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^portal/$', core_views.portal, name='portal'),
-    url(r'^logout/$', LogoutView.as_view(template_name= 'login.html'), name='logout'),
+    url(r'^logout/$', core_views.logout_view, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^portal/add_students_announcement/$',core_views.StudentsAnnouncmentview.as_view(),name='studentannouncement'),
+    url(r'^portal/profile/$', core_views.profile, name='profile'),
+    url(r'^portal/add_students_announcement/$',core_views.StudentsAnnouncementview.as_view(),name='studentannouncement'),
+    url(r'^portal/add_prvate_announcement/$',core_views.PrivateAnnouncementview.as_view(),name='privateannouncement'),
 ]
