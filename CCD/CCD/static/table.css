@@ -7,11 +7,16 @@ table {
 /* Zebra striping */
 
 tr{ 
-  background: #fff; 
+  background: #b1ffb1; 
   }
-
+tr:nth-child(odd){ 
+    background: #4eff4e;
+  }
+tr:nth-child(even){
+    background: #89ff89;
+  }
 th { 
-  background: #555; 
+  background: #3bc43b; 
   color: white; 
   font-weight: bold; 
   }
