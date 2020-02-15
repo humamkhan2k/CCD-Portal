@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^portal/$', core_views.portal, name='portal'),
     url(r'^logout/$', LogoutView.as_view(template_name= 'login.html'), name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
+    url(r'^portal/add_students_announcement/$',core_views.StudentsAnnouncmentview.as_view(),name='studentannouncement'),
 ]

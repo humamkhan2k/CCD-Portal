@@ -10,7 +10,7 @@
        
       </header>
       <br><br>
-      <h1 align="center"> Students' List </h1>
+      <h1 align="center"> Student's Announcement List </h1>
       <table>
         <thead>
           <tr class="table-headers">
@@ -20,7 +20,7 @@
             <th>Roll Number
               
             </th>
-            <th>Company Call
+            <th>Company's Announcment Call
                 <i style="float: right; margin-top:5px;font-size: 15px; margin-right: 10px;"class="fa fa-sort" aria-hidden="true"></i>
             </th>
             <th>Call Time
@@ -29,18 +29,14 @@
           </tr>
         </thead> 
         <tbody>
+        {% for announcement in all_Announcement %}
           </tr>
-            <td>Humam Khan</td>
-            <td>180123057</td>
-            <td>DE Shaw</td>
-            <td>12:00:00</td>
+            <td>{{ announcement.student }}</td>
+            <td>{{ announcement.rollnumber }}</td>
+            <td>{{ announcement.Announcement }}</td>
+            <td>{{ announcement.AnnouncementTime }}</td>
           </tr>
-          </tr>
-            <td>Kartikeya Singh</td>
-            <td>180123021</td>
-            <td>Microsoft</td>
-            <td>13:35:03</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table> 
 
