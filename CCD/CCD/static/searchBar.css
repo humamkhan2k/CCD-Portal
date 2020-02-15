@@ -3,7 +3,7 @@ input[type=text].topnav  {
   float: right;
   padding: 6px;
   background: #3bc43b;
-  border: none;
+  border: #007600;
   color: #fff;
   text-align: left;
   margin-top: 0px;

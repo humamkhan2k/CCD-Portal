@@ -9,10 +9,7 @@
         
       <form method="post">
       {% csrf_token %}
-<<<<<<< HEAD
       <!--<input type="hidden" name="next" value="{{ next }}" /> -->
-=======
->>>>>>> a3fb6cac250c608c0cc5d151587994f248177391
       {% for field in form %}
         <p>
           {{ field.label_tag }}<br>
