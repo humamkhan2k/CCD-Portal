@@ -238,6 +238,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 }
                                 
                                 .agileits-top {
+                                    background: #66ad66;
                                     padding: 3em;
                                 }
                                 
@@ -245,7 +246,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 input[type="email"],
                                 input[type="password"] {
                                     font-size: 0.9em;
-                                    color: #fff;
+                                    color: #000;
+                                    background: #d8ffd8;
                                     font-weight: 100;
                                     width: 94.5%;
                                     display: block;
@@ -254,12 +256,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     border: solid 1px rgba(255, 255, 255, 0.37);
                                     -webkit-transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
                                     transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
-                                    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 96%, #fff 4%);
-                                    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #fff 4%);
-                                    background-position: -800px 0;
-                                    background-size: 100%;
-                                    background-repeat: no-repeat;
-                                    color: #fff;
                                     font-family: 'Roboto', sans-serif;
                                 }
                                 
@@ -309,9 +305,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 input[type="submit"] {
                                     font-size: .9em;
                                     color: #fff;
-                                    background: #76b852;
+                                    background: #2e612e;
                                     outline: none;
-                                    border: 1px solid #76b852;
+                                    border: 1px solid #2e612e;
                                     cursor: pointer;
                                     padding: 0.9em;
                                     -webkit-appearance: none;
@@ -459,137 +455,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     overflow: hidden;
                                 }
                                 
-                                .colorlib-bubbles {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
-                                    width: 100%;
-                                    height: 100%;
-                                    z-index: -1;
-                                }
                                 
-                                .colorlib-bubbles li {
-                                    position: absolute;
-                                    list-style: none;
-                                    display: block;
-                                    width: 40px;
-                                    height: 40px;
-                                    background-color: rgba(255, 255, 255, 0.15);
-                                    bottom: -160px;
-                                    -webkit-animation: square 20s infinite;
-                                    -moz-animation: square 250s infinite;
-                                    -o-animation: square 20s infinite;
-                                    -ms-animation: square 20s infinite;
-                                    animation: square 20s infinite;
-                                    -webkit-transition-timing-function: linear;
-                                    -moz-transition-timing-function: linear;
-                                    -o-transition-timing-function: linear;
-                                    -ms-transition-timing-function: linear;
-                                    transition-timing-function: linear;
-                                    -webkit-border-radius: 50%;
-                                    -moz-border-radius: 50%;
-                                    -o-border-radius: 50%;
-                                    -ms-border-radius: 50%;
-                                    border-radius: 50%;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(1) {
-                                    left: 10%;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(2) {
-                                    left: 20%;
-                                    width: 80px;
-                                    height: 80px;
-                                    -webkit-animation-delay: 2s;
-                                    -moz-animation-delay: 2s;
-                                    -o-animation-delay: 2s;
-                                    -ms-animation-delay: 2s;
-                                    animation-delay: 2s;
-                                    -webkit-animation-duration: 17s;
-                                    -moz-animation-duration: 17s;
-                                    -o-animation-duration: 17s;
-                                    animation-duration: 17s;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(3) {
-                                    left: 25%;
-                                    -webkit-animation-delay: 4s;
-                                    -moz-animation-delay: 4s;
-                                    -o-animation-delay: 4s;
-                                    -ms-animation-delay: 4s;
-                                    animation-delay: 4s;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(4) {
-                                    left: 40%;
-                                    width: 60px;
-                                    height: 60px;
-                                    -webkit-animation-duration: 22s;
-                                    -moz-animation-duration: 22s;
-                                    -o-animation-duration: 22s;
-                                    -ms-animation-duration: 22s;
-                                    animation-duration: 22s;
-                                    background-color: rgba(255, 255, 255, 0.25);
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(5) {
-                                    left: 70%;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(6) {
-                                    left: 80%;
-                                    width: 120px;
-                                    height: 120px;
-                                    -webkit-animation-delay: 3s;
-                                    -moz-animation-delay: 3s;
-                                    -o-animation-delay: 3s;
-                                    -ms-animation-delay: 3s;
-                                    animation-delay: 3s;
-                                    background-color: rgba(255, 255, 255, 0.2);
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(7) {
-                                    left: 32%;
-                                    width: 160px;
-                                    height: 160px;
-                                    -webkit-animation-delay: 7s;
-                                    -moz-animation-delay: 7s;
-                                    -o-animation-delay: 7s;
-                                    -ms-animation-delay: 7s;
-                                    animation-delay: 7s;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(8) {
-                                    left: 55%;
-                                    width: 20px;
-                                    height: 20px;
-                                    -webkit-animation-delay: 15s;
-                                    -moz-animation-delay: 15s;
-                                    animation-delay: 15s;
-                                    -webkit-animation-duration: 40s;
-                                    -moz-animation-duration: 40s;
-                                    animation-duration: 40s;
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(9) {
-                                    left: 25%;
-                                    width: 10px;
-                                    height: 10px;
-                                    -webkit-animation-delay: 2s;
-                                    animation-delay: 2s;
-                                    -webkit-animation-duration: 40s;
-                                    animation-duration: 40s;
-                                    background-color: rgba(255, 255, 255, 0.3);
-                                }
-                                
-                                .colorlib-bubbles li:nth-child(10) {
-                                    left: 90%;
-                                    width: 160px;
-                                    height: 160px;
-                                    -webkit-animation-delay: 11s;
-                                    animation-delay: 11s;
-                                }
                                 
                                 @-webkit-keyframes square {
                                     0% {
