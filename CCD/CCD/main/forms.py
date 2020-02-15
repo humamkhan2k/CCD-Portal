@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from .models import UserProfile,StudentsAnnouncement
+from .models import UserProfile,StudentsAnnouncement,PrivateAnnouncement
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -15,7 +15,12 @@ class ProfileForm(forms.ModelForm):
         model = UserProfile
         fields = ('company','email')
         
-class StudentsAnnouncmentForm(forms.ModelForm):
+class StudentsAnnouncementForm(forms.ModelForm):
     class Meta:
         model = StudentsAnnouncement
         fields = ('student','rollnumber','Announcement')
+        
+class PrivateAnnouncementForm(forms.ModelForm):
+    class Meta:
+        model = PrivateAnnouncement
+        fields = ('Announcement',)

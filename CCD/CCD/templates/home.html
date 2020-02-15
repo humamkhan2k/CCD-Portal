@@ -4,7 +4,8 @@
 <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <!--<a class="navbar-brand mr-4" href="#"></a>-->
-      <a class="navbar-brand mr-4" href="#">Home</a>
+      <a class="navbar-brand mr-4" href="{% url 'home' %}">Home</a>
+      <a class="navbar-brand mr-4" href="{% url 'portal' %}">Portal</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -15,6 +16,9 @@
         <a class="navbar-brand mr-4" href="{% url 'studentannouncement' %}" >
           Add Student's Anouncement
         </a>
+        <a class="navbar-brand mr-4" href="{% url 'privateannouncement' %}" >
+          private Anouncement
+        </a>
 
           <a class="navbar-brand mr-4" href="#">Students List</a>
         </div>
@@ -23,7 +27,7 @@
         </div>
         <!-- Navbar Right Side -->
         <div class="navbar-nav navbar-right">
-          <a class="navbar-brand mr-4" href="#">{{ user.username }}</a>
+          <a class="navbar-brand mr-4" href="{% url 'profile' %}">{{ user.username }}</a>
           <a class="navbar-brand mr-4" href="./">|</a>
           <a class="navbar-brand mr-4" href="{% url 'home' %}">Logout</a>
         </div>
