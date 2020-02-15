@@ -3,6 +3,9 @@
   <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="navbar-nav navbar-right">
+          {% if user %}
+          <a class="navbar-brand mr-4" href="{% url 'portal' %}">back</a>
+          {% endif %}
           {% if user.is_authenticated %}
           <a class="navbar-brand mr-4" href="{% url 'portal' %}">back</a>
           {% else %}
@@ -18,16 +21,14 @@
         <thead>
           <tr class="table-headers">
             <th>Student Name
-                <i style="float: right; margin-top:5px;font-size: 15px; margin-right: 30px;"class="fa fa-sort" aria-hidden="true"></i>
             </th>
             <th>Roll Number
               
             </th>
             <th>Company's Announcment Call
-                <i style="float: right; margin-top:5px;font-size: 15px; margin-right: 10px;"class="fa fa-sort" aria-hidden="true"></i>
+                
             </th>
             <th>Call Time
-              <i style="float: right; margin-top:5px;font-size: 15px; margin-right: 30px;"class="fa fa-sort" aria-hidden="true"></i>
             </th>
           </tr>
         </thead> 

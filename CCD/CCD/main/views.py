@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
@@ -6,7 +7,12 @@ from django.contrib import messages
 from .forms import UserForm, ProfileForm, StudentsAnnouncementForm, PrivateAnnouncementForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
+<<<<<<< HEAD
 from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement
+=======
+from .models import StudentsAnnouncement,UserProfile, User
+from django.urls import reverse_lazy
+>>>>>>> b31e434fa56bfe234d04a09936fad47ebe383e38
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView
 # Create your views here.
@@ -28,6 +34,7 @@ def portal(request):
 def logout_view(request):
     print ("hii")
     logout(request)
+    return render(request,'homepage.html')
     return HttpResponseRedirect(reverse('home'))
 
 class StudentsAnnouncementview(CreateView):
