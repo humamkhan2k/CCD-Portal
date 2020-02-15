@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^signup/$', core_views.signup, name='signup'),
     url(r'^portal/profile/$', core_views.profile, name='profile'),
     url(r'^portal/add_students_announcement/$',core_views.StudentsAnnouncementview.as_view(),name='studentannouncement'),
-    url(r'^portal/add_prvate_announcement/$',core_views.PrivateAnnouncementview.as_view(),name='privateannouncement'),
+    url(r'^portal/add_private_announcement/$',core_views.PrivateAnnouncementview.as_view(),name='privateannouncement'),
 ]

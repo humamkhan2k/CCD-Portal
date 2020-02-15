@@ -6,7 +6,7 @@ from django.contrib import messages
 from .forms import UserForm, ProfileForm, StudentsAnnouncementForm, PrivateAnnouncementForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
-from .models import StudentsAnnouncement,UserProfile, User
+from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView
 # Create your views here.
@@ -20,7 +20,9 @@ def home(request):
 
 @login_required
 def portal(request):
-    return render(request, 'home.html')
+    all_Announcement1 = PrivateAnnouncement.objects.all()
+    all_Announcement = all_Announcement1[::-1]
+    return render(request, 'home.html',{'all_Announcement' : all_Announcement})
 
 @login_required
 def logout_view(request):
@@ -36,10 +38,17 @@ class StudentsAnnouncementview(CreateView):
 class PrivateAnnouncementview(CreateView):
      form_class = PrivateAnnouncementForm
      template_name = 'Private_Announcement_create.html'
-     success_url = reverse_lazy('portal')
+     #success_url = reverse_lazy('portal')
+     
+     def form_valid(self, form):
+          self.object = form.save(commit=False)
+          obj = UserProfile.objects.get(user=self.request.user)
+          self.object.user = obj
+          self.object.poc_company = obj.company
+          self.object.save()
+          return HttpResponseRedirect(reverse('portal'))
 
 def profile(request):
-    #s = User.username
     user = request.user
     obj = UserProfile.objects.get(user=user)
     args = {'obj' : obj}

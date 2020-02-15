@@ -42,13 +42,24 @@
   <br>
 
   <table>
+  <thead>
   <tr>
     <th>POC Name</th>
     <th>Company Name</th>
     <th >Announcements</th>
     <th >Anouncement Time</th>
   </tr>
-
+  </thead>
+  <tbody>
+  {% for announcement in all_Announcement %}
+          </tr>
+            <td>{{ user.username }}</td>
+            <td>{{ announcement.poc_company }}</td>
+            <td>{{ announcement.Announcement }}</td>
+            <td>{{ announcement.AnnouncementTime }}</td>
+          </tr>
+          {% endfor %}
+  </tbody>
 
 </table>
 
