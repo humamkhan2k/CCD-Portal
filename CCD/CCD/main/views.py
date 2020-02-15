@@ -22,9 +22,11 @@ def home(request):
 def portal(request):
     return render(request, 'home.html')
 
+@login_required
 def logout_view(request):
+    print ("hii")
     logout(request)
-    return render(request,'hompage.html')
+    return render(request,'homepage.html')
 
 class StudentsAnnouncementview(CreateView):
      form_class = StudentsAnnouncementForm
@@ -38,9 +40,10 @@ class PrivateAnnouncementview(CreateView):
 
 def profile(request):
     #s = User.username
-    #obj = UserProfile.objects.get(user__exact = me)
-    #args = {'obj' : obj}
-    return render(request,'profile.html')
+    user = request.user
+    obj = UserProfile.objects.get(user=user)
+    args = {'obj' : obj}
+    return render(request,'profile.html',args)
 
 def signup(request):
     if request.method == 'POST':
