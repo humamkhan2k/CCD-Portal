@@ -115,7 +115,6 @@ class StudentAnnouncementDeleteView(LoginRequiredMixin, UserPassesTestMixin, Del
             return True
         return False
 
-@login_required
 def signup(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST)

@@ -6,14 +6,14 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="navbar-nav navbar-right">
           {% if user.is_authenticated %}
-          <a class="navbar-brand mr-4" href="{% url 'portal' %}">back</a>
+          <a class="navbar-brand mr-4" href="{% url 'portal' %}">Back</a>
           {% else %}
           <a class="navbar-brand mr-4" href="{% url 'login' %}">Login</a>
           {% endif %}
           </div>
           {% csrf_token %}
           <div class="search-box">
-          <input class="topnav" type="text" placeholder="Type to search" name="search" id="search">
+          <input class="topnav" type="text" placeholder="  Type to search" name="search" id="search">
           <a class="search-btn" href="#">
             <i class="fas fa-search"></i>
           </a>
@@ -24,14 +24,14 @@
       <br><br>
       <h1 align="center"> Student's Announcement List </h1>
 
-      <div class="limiter">
-        <div class="container-table100">
-          <div class="wrap-table100">
+      <!--<div class="limiter">-->
+        <!--<div class="container-table100">-->
+         <!-- <div class="wrap-table100">-->
             <div id="search-results" class="table100">  
-            </div>
-          </div>
-        </div>
-      </div>
+          <!--  </div>-->
+          <!--</div>-->
+        <!--</div>-->
+     <!-- </div>-->
 
 
 {% endblock %}   

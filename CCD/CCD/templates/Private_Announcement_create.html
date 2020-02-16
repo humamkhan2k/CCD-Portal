@@ -1,7 +1,18 @@
-<form method="post">
-{% csrf_token %}
-{% for field in form %}
-{{field.label}}{{field}}<br>
-{% endfor %}
-<input type='submit' value='Save' />
- </form>
+{% extends 'header.html' %}
+
+{% block content %}
+<div class="main-w3layouts wrapper">
+	<div class="main-agileinfo">
+      	<div class="agileits-top">
+			<form method="post">
+				{% csrf_token %}
+				{% for field in form %}
+				<div class="LabelColor">{{field.label}}</div>{{field}}<br>
+				{% endfor %}
+				<input type='submit' value='Save' />
+			</form>
+		</div>
+	</div>
+</div>
+
+ {% endblock %}
