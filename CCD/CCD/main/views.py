@@ -17,15 +17,15 @@ from django.views.generic import CreateView
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 
 def home(request):
-    all_Announcement1 = StudentsAnnouncement.objects.all()
-    all_Announcement = all_Announcement1[::-1]
-    return render(request, 'homepage.html',{'all_Announcement' : all_Announcement})
+    # all_Announcement1 = StudentsAnnouncement.objects.all()
+    # all_Announcement = all_Announcement1[::-1]
+    return render(request, 'homepage.html')
 
 @login_required
 def portal(request):
-    all_Announcement1 = PrivateAnnouncement.objects.all()
-    all_Announcement = all_Announcement1[::-1]
-    return render(request, 'home.html',{'all_Announcement' : all_Announcement})
+    # all_Announcement1 = PrivateAnnouncement.objects.all()
+    # all_Announcement = all_Announcement1[::-1]
+    return render(request, 'home.html')
 
 def search(request):
   if request.method == 'POST':
