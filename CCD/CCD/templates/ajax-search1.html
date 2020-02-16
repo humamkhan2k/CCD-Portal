@@ -3,19 +3,41 @@
 <table>
   <thead class="table100-head">
   <tr>
+<<<<<<< HEAD
     <th class="column1">POC Name</th>
     <th class="column2">Company Name</th>
     <th class="column3">Announcements</th>
     <th class="column4">Anouncement Time</th>
+=======
+    <th>POC Name</th>
+    <th>Company Name</th>
+    <th >Announcements</th>
+    <th >Anouncement Time</th>
+    <th></th>
+>>>>>>> 463aaf10bae239c4334d31b093b81fb058255021
   </tr>
   </thead>
   <tbody>
   {% for announcement in all_Announcement %}
           <tr>
+<<<<<<< HEAD
             <td class="column1">{{ announcement.user }}</td>
             <td class="column2">{{ announcement.poc_company }}</td>
             <td class="column3">{{ announcement.Announcement }}</td>
             <td class="column4">{{ announcement.AnnouncementTime }}</td>
+=======
+            <td><a href="{% url 'profile' announcement.user.user.id %}">{{ announcement.user }}</a></td>
+            <td>{{ announcement.poc_company }}</td>
+            <td>{{ announcement.Announcement }}</td>
+            <td>{{ announcement.AnnouncementTime|date:"h:i A d,M" }}</td>
+            {% if request.user == announcement.user.user %}
+            <td> 
+            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'announcement-delete' announcement.id %}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+            </td>
+            {% else %}
+            <td> </td>
+            {% endif %}
+>>>>>>> 463aaf10bae239c4334d31b093b81fb058255021
           </tr>
           {% endfor %}
   </tbody>
