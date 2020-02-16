@@ -2,8 +2,8 @@ input[type=text].topnav  {
   border-radius: 25px;
   float: right;
   padding: 6px;
-  background: #3bc43b;
-  border: #007600;
+  background: #c850c0;
+  border: none;
   color: #fff;
   text-align: left;
   margin-top: 0px;
@@ -16,7 +16,7 @@ input[type=text].topnav  {
   a.topnav ,input[type=text].topnav  {
     float: none;
     display: block;
-    background: #3bc43b;
+    background: #c850c0;
     color: #fff;
     text-align: left;
     width: 100%;

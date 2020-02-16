@@ -1,21 +1,21 @@
 {% if all_Announcement.count > 0 %}
 
 <table>
-  <thead>
+  <thead class="table100-head">
   <tr>
-    <th>POC Name</th>
-    <th>Company Name</th>
-    <th >Announcements</th>
-    <th >Anouncement Time</th>
+    <th class="column1">POC Name</th>
+    <th class="column2">Company Name</th>
+    <th class="column3">Announcements</th>
+    <th class="column4">Anouncement Time</th>
   </tr>
   </thead>
   <tbody>
   {% for announcement in all_Announcement %}
           <tr>
-            <td>{{ announcement.user }}</td>
-            <td>{{ announcement.poc_company }}</td>
-            <td>{{ announcement.Announcement }}</td>
-            <td>{{ announcement.AnnouncementTime }}</td>
+            <td class="column1">{{ announcement.user }}</td>
+            <td class="column2">{{ announcement.poc_company }}</td>
+            <td class="column3">{{ announcement.Announcement }}</td>
+            <td class="column4">{{ announcement.AnnouncementTime }}</td>
           </tr>
           {% endfor %}
   </tbody>
@@ -26,12 +26,12 @@
 {% else %}
 
 <table>
-  <thead>
+  <thead class="table100-head">
   <tr>
-    <th>POC Name</th>
-    <th>Company Name</th>
-    <th >Announcements</th>
-    <th >Anouncement Time</th>
+    <th class="column1">POC Name</th>
+    <th class="column2">Company Name</th>
+    <th class="column3">Announcements</th>
+    <th class="column4">Anouncement Time</th>
   </tr>
   </thead>
   <tbody>
