@@ -12,6 +12,7 @@ from .models import StudentsAnnouncement,UserProfile, User
 from django.urls import reverse_lazy
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 # Create your views here.
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)

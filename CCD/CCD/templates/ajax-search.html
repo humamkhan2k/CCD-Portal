@@ -20,7 +20,7 @@
             <td>{{ announcement.student }}</td>
             <td>{{ announcement.rollnumber }}</td>
             <td>{{ announcement.Announcement }}</td>
-            <td>{{ announcement.AnnouncementTime }}</td>
+            <td>{{ announcement.AnnouncementTime |date:"h:i A d,M"}}</td>
           </tr>
           {% endfor %}
     </tbody>
