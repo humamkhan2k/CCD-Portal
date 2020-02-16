@@ -7,12 +7,9 @@ from django.contrib import messages
 from .forms import UserForm, ProfileForm, StudentsAnnouncementForm, PrivateAnnouncementForm
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
-<<<<<<< HEAD
 from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement
-=======
 from .models import StudentsAnnouncement,UserProfile, User
 from django.urls import reverse_lazy
->>>>>>> b31e434fa56bfe234d04a09936fad47ebe383e38
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView
 # Create your views here.
@@ -30,11 +27,34 @@ def portal(request):
     all_Announcement = all_Announcement1[::-1]
     return render(request, 'home.html',{'all_Announcement' : all_Announcement})
 
+def search(request):
+  if request.method == 'POST':
+    search_text = request.POST['search_text']
+    all_Announcement1 = StudentsAnnouncement.objects.filter(student__contains=search_text)
+    all_Announcement1 |= StudentsAnnouncement.objects.filter(rollnumber__contains=search_text)
+  else:
+    search_text = ''
+    all_Announcement1 = StudentsAnnouncement.objects.all() 
+  all_Announcement = all_Announcement1.order_by('-AnnouncementTime')
+  return render(request, 'ajax-search.html', { 'all_Announcement': all_Announcement } )
+
+
+
+def search1(request):
+  if request.method == 'POST':
+    search_text = request.POST['search_text']
+    all_Announcement1 = PrivateAnnouncement.objects.filter(user__in=UserProfile.objects.filter(user__in=User.objects.filter(username__contains=search_text)))
+    all_Announcement1 |= PrivateAnnouncement.objects.filter(poc_company__contains=search_text)
+  else:
+    search_text = ''
+    all_Announcement1 = PrivateAnnouncement.objects.all() 
+  all_Announcement = all_Announcement1.order_by('-AnnouncementTime')
+  return render(request, 'ajax-search1.html', { 'all_Announcement': all_Announcement } )
+
 @login_required
 def logout_view(request):
     print ("hii")
     logout(request)
-    return render(request,'homepage.html')
     return HttpResponseRedirect(reverse('home'))
 
 class StudentsAnnouncementview(CreateView):
@@ -60,6 +80,7 @@ def profile(request):
     obj = UserProfile.objects.get(user=user)
     args = {'obj' : obj}
     return render(request,'profile.html',args)
+    
 
 def signup(request):
     if request.method == 'POST':

@@ -1,6 +1,8 @@
 {% extends 'header.html' %}
-
+{% load static %}
 {% block content %}
+
+<script src="{% static 'Ajax1.js' %}"></script>
 <header class="site-header">
   <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <!--<a class="navbar-brand mr-4" href="#"></a>-->
@@ -25,9 +27,16 @@
         
         <!-- Navbar Right Side -->
         <div class="navbar-nav navbar-right">
-          <div>
-          <input type="text" placeholder="  Search..." class="topnav">
+          {% csrf_token %}
+          <div class="search-box">
+          <input class="search-txt" type="text" placeholder="Type to search" name="search1" id="search1">
+          <a class="search-btn" href="#">
+            <i class="fas fa-search"></i>
+          </a>
           </div>
+          <!-- <div>
+          <input type="text" placeholder="  Search..." class="topnav">
+          </div> -->
 
           <a class="navbar-brand mr-4" href="{% url 'profile' %}">{{ user.username }}</a>
           <a class="navbar-brand mr-4" href="./">|</a>
@@ -44,26 +53,36 @@
   <br>
   <br>
 
-  <table>
-  <thead>
-  <tr>
-    <th>POC Name</th>
-    <th>Company Name</th>
-    <th >Announcements</th>
-    <th >Anouncement Time</th>
-  </tr>
-  </thead>
-  <tbody>
-  {% for announcement in all_Announcement %}
-          </tr>
-            <td>{{ user.username }}</td>
-            <td>{{ announcement.poc_company }}</td>
-            <td>{{ announcement.Announcement }}</td>
-            <td>{{ announcement.AnnouncementTime }}</td>
-          </tr>
-          {% endfor %}
-  </tbody>
+  <div id="search-results1"></div>
+  <script>
+            $(function() {
 
-</table>
+
+
+    $('#search1').keyup(function() {
+
+        $.ajax({
+            type: "POST",
+            url: "/portal/search/",
+            
+            data: {
+                'search_text' : $('#search1').val(),
+                'csrfmiddlewaretoken' : $("input[name=csrfmiddlewaretoken]").val()
+            },
+            success: searchSuccess,
+            dataType: 'html'
+        });
+    });
+});
+
+function searchSuccess(data, textStatus, jqXHR)
+{   
+    // let lis = document.getElementById("mainlist");
+    // console.log(sres.childNodes.length    )
+        // lis.style.display = "none";
+
+    $('#search-results1').html(data)
+}
+  </script>
 
 {% endblock %}

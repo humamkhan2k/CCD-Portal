@@ -1,0 +1,43 @@
+{% if all_Announcement.count > 0 %}
+
+<table>
+  <thead>
+  <tr>
+    <th>POC Name</th>
+    <th>Company Name</th>
+    <th >Announcements</th>
+    <th >Anouncement Time</th>
+  </tr>
+  </thead>
+  <tbody>
+  {% for announcement in all_Announcement %}
+          <tr>
+            <td>{{ announcement.user }}</td>
+            <td>{{ announcement.poc_company }}</td>
+            <td>{{ announcement.Announcement }}</td>
+            <td>{{ announcement.AnnouncementTime }}</td>
+          </tr>
+          {% endfor %}
+  </tbody>
+
+</table>
+
+
+{% else %}
+
+<table>
+  <thead>
+  <tr>
+    <th>POC Name</th>
+    <th>Company Name</th>
+    <th >Announcements</th>
+    <th >Anouncement Time</th>
+  </tr>
+  </thead>
+  <tbody>
+
+<tr><th colspan="4">No announcements found</th></tr>
+</tbody>
+</table>
+
+{% endif %}

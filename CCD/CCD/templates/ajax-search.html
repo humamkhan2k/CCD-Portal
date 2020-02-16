@@ -1,0 +1,48 @@
+{% if all_Announcement.count > 0 %}
+	<table>
+        <thead>
+          <tr class="table-headers">
+            <th>Student Name
+            </th>
+            <th>Roll Number
+              
+            </th>
+            <th>Company's Announcment Call
+                
+            </th>
+            <th>Call Time
+            </th>
+          </tr>
+        </thead>
+	<tbody>
+        {% for announcement in all_Announcement %}
+          <tr>
+            <td>{{ announcement.student }}</td>
+            <td>{{ announcement.rollnumber }}</td>
+            <td>{{ announcement.Announcement }}</td>
+            <td>{{ announcement.AnnouncementTime }}</td>
+          </tr>
+          {% endfor %}
+    </tbody>
+	</table>
+{% else %}
+<table>
+        <thead>
+          <tr class="table-headers">
+            <th>Student Name
+            </th>
+            <th>Roll Number
+              
+            </th>
+            <th>Company's Announcment Call
+                
+            </th>
+            <th>Call Time
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+	<tr><th colspan="4">No announcements found</th></tr>
+</tbody>
+</table>
+{% endif %}

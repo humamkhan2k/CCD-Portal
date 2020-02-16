@@ -23,6 +23,8 @@ admin.autodiscover()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('search/', core_views.search, name='search'),
+    path('portal/search/', core_views.search1, name='search1'),
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^portal/$', core_views.portal, name='portal'),
@@ -31,4 +33,4 @@ urlpatterns = [
     url(r'^portal/profile/$', core_views.profile, name='profile'),
     url(r'^portal/add_students_announcement/$',core_views.StudentsAnnouncementview.as_view(),name='studentannouncement'),
     url(r'^portal/add_private_announcement/$',core_views.PrivateAnnouncementview.as_view(),name='privateannouncement'),
-]
+    ]
