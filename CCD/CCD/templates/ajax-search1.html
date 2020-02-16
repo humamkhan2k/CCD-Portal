@@ -7,7 +7,6 @@
     <th class="column2">Company Name</th>
     <th class="column3">Announcements</th>
     <th class="column4">Anouncement Time</th>
-    <th></th>
   </tr>
   </thead>
   <tbody>
@@ -16,14 +15,16 @@
             <td class="column1"><a href="{% url 'profile' announcement.user.user.id %}">{{ announcement.user }}</a></td>
             <td class="column2">{{ announcement.poc_company }}</td>
             <td class="column3">{{ announcement.Announcement }}</td>
-            <td class="column4">{{ announcement.AnnouncementTime|date:"h:i A d,M" }}</td>
+            <td class="column4">{{ announcement.AnnouncementTime|date:"h:i A d,M" }}
+               &ensp;
             {% if request.user == announcement.user.user %}
-            <td> 
-            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'announcement-delete' announcement.id %}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
-            </td>
-            {% else %}
-            <td> </td>
+            <a href="{% url 'announcement-delete' announcement.id %}" onclick="return confirm('Are you sure you want to delete this?')">
+               <span aria-hidden="true">&times;</span>
+            </a>
             {% endif %}
+
+            </td>
+
           </tr>
           {% endfor %}
   </tbody>

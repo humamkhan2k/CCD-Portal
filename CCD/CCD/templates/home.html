@@ -7,7 +7,6 @@
   <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <!--<a class="navbar-brand mr-4" href="#"></a>-->
       <a class="navbar-brand mr-4" href="{% url 'home' %}">Home</a>
-      <a class="navbar-brand mr-4" href="{% url 'portal' %}">Portal</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -37,10 +36,11 @@
           <!-- <div>
           <input type="text" placeholder="  Search..." class="topnav">
           </div> -->
-
+          <div class="navbar-nav navbar-right">
           <a class="navbar-brand mr-4" href="{% url 'profile' %}">{{ user.username }}</a>
-          <a class="navbar-brand mr-4" href="./">|</a>
+          
           <a class="navbar-brand mr-4" href="{% url 'logout' %}">Logout</a>
+          </div>
         </div>
         
 

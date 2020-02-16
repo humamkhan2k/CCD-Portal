@@ -3,7 +3,6 @@
                                 html,
                                 body,
                                 div,
-                                span,
                                 applet,
                                 object,
                                 iframe,
@@ -714,4 +713,9 @@
                                 textarea{
                                     width: 100%;
                                     border-radius:10px; 
+                                }
+
+                                span {
+                                    font-size:25px; 
+                                    color: red;
                                 }
