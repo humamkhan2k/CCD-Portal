@@ -11,6 +11,7 @@ class UserProfile(models.Model):
         return self.user.username
     
 class StudentsAnnouncement(models.Model):
+    user = models.ForeignKey(UserProfile,on_delete=models.CASCADE,default='')
     student = models.CharField(max_length=40,default='')
     rollnumber = models.CharField(max_length=20,default='')
     Announcement = models.TextField()
