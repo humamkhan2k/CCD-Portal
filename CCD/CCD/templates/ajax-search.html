@@ -24,7 +24,7 @@
             <td class="column4">{{ announcement.AnnouncementTime |date:"h:i A d,M"}}
             &ensp;
             {% if user.is_authenticated %}
-            {% if request.user == announcement.user.user %}
+            {% if request.user == announcement.user.user or request.user.is_superuser %}
              <a  href="{% url 'student-announcement-delete' announcement.id %}" onclick="return confirm('Are you sure you want to delete this?')">
                  <span aria-hidden="true" >&times;</span>
             </a>

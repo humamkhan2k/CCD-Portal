@@ -83,35 +83,32 @@ class PrivateAnnouncementview(LoginRequiredMixin,CreateView):
 def profile(request,pk=None):
       if pk:
            user = User.objects.get(pk=pk)
-           print("kk")
-           print(pk)
            obj = UserProfile.objects.get(user=user)
       else:
            user = request.user
-           print("hh")
            obj = UserProfile.objects.get(user=user)
       args = {'obj' : obj}
       return render(request,'profile.html',args)
     
-class AnnouncementDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class AnnouncementDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = PrivateAnnouncement
     template_name = 'privateannouncement_confirm_delete.html'
     success_url = reverse_lazy('portal')
 
     def test_func(self):
         announcement = self.get_object()
-        if self.request.user == announcement.user.user:
+        if self.request.user == announcement.user.user or self.request.user.is_superuser:
             return True
         return False
       
 class StudentAnnouncementDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = StudentsAnnouncement
     template_name = 'studentsannouncement_confirm_delete.html'
-    success_url = reverse_lazy('portal')
+    success_url = reverse_lazy('home')
 
     def test_func(self):
         announcement = self.get_object()
-        if self.request.user == announcement.user.user: 
+        if self.request.user == announcement.user.user  or self.request.user.is_superuser: 
             return True
         return False
 
