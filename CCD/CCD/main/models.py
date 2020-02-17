@@ -6,6 +6,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     company = models.CharField(max_length=40,default='')
     email = models.EmailField(default='',unique = True)
+    Phone_number = models.IntegerField(default=0)
     
     def __str__(self):
         return self.user.username
@@ -23,3 +24,7 @@ class PrivateAnnouncement(models.Model):
     Announcement = models.TextField()
     AnnouncementTime = models.DateTimeField(default=timezone.now)
     
+#class Students(models.Models):
+ #   name = models.CharField(max_length=40,default='')
+  #  Phone_number = models.IntegerField(default=0)
+   # email = models.EmailField(default='',unique = True)
