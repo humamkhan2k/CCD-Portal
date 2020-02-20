@@ -1,0 +1,71 @@
+{% extends 'header.html' %}
+{% block content %}
+<header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+       <div class="navbar-nav navbar-right">
+            <a class="navbar-brand mr-4" href="{% url 'portal' %}">Back</a>
+        </div>
+    </nav>
+</header>
+<p align="center" ><font size="7">Short Students</font></p>
+<br>
+<table>
+        <thead>
+          <tr class="table100-head">
+            <th class="column1">Name</th>
+            <th class="column2">Company</th>
+            <th class="column3">Entry Time</th>
+            <th class="column4">Expected Time</th>
+            <th class="column5"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% if shortlist %}
+            {% for candidate in shortlist %}
+             {% if candidate.is_interview == True %}
+             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% else %}
+             <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% endif %}
+            <td class="column2"></td>
+            <td class="column3"></td>
+            <td class="column4"></td>
+            <td class="column5"><a href="{% url 'Update-Profile' candidate.id poc.id%}"> Submit </a><td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+        </tbody>
+</table>
+<br>
+<p align="center" ><font size="7">Waiting List</font></p>
+<br>
+<table>
+        <thead>
+          <tr class="table100-head">
+            <th class="column1"></th>
+            <th class="column2"></th>
+            <th class="column3"></th>
+            <th class="column4"></th>
+            <th class="column5"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {% if waitlist %}
+            {% for candidate in waitlist %}
+             {% if candidate.is_interview == True %}
+             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% else %}
+             <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% endif %}
+            <td class="column2"></td>
+            <td class="column3"></td>
+            <td class="column4"></td>
+            <td class="column5"><a href="{% url 'Update-Profile' candidate.id poc.id %}"> Submit </a></td>
+            {% endfor %}
+            {% endif %}
+        </tr>
+        </tbody>
+</table>
+{% endblock %}

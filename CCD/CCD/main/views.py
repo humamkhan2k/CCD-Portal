@@ -1,13 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import HttpResponse,HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 #from django.contrib.auth.forms import UserCreationForm
-from .forms import UserForm, ProfileForm, StudentsAnnouncementForm, PrivateAnnouncementForm
+from .forms import UserForm, ProfileForm, StudentsAnnouncementForm, PrivateAnnouncementForm,UpdateCandidateDetail
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import cache_control
-from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement
+from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement, candidate,company,eligible
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView , DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -24,7 +24,13 @@ def home(request):
 def portal(request):
     # all_Announcement1 = PrivateAnnouncement.objects.all()
     # all_Announcement = all_Announcement1[::-1]
-    return render(request, 'home.html')
+    try:
+       user = request.user
+       obj = UserProfile.objects.get(user=user)
+    except:
+      obj = request.user
+    args = {'obj' : obj}
+    return render(request, 'home.html',args)
 
 def search(request):
   if request.method == 'POST':
@@ -89,6 +95,45 @@ def profile(request,pk=None):
            obj = UserProfile.objects.get(user=user)
       args = {'obj' : obj}
       return render(request,'profile.html',args)
+    
+@login_required
+def studentprofile(request,pk):
+      obj = candidate.objects.get(pk=pk)
+      user = request.user
+      obj1 = UserProfile.objects.get(user=user)
+      args = {'obj' : obj, 'obj1' : obj1}
+      return render(request,'studentprofile.html',args)
+
+@login_required
+def selectedstudents(request,pk):
+      context = {}
+      try:
+          poc = UserProfile.objects.get(pk=pk)
+          company = poc.company
+          context['shortlist'] = company.shortlist_candidate.all().filter( is_selected = False)
+          context['waitlist'] = company.waiting_candidate.all().filter( is_selected = False)
+          context['poc'] = poc
+          context['id'] = pk
+      except:
+          context={}
+      #if request.user.is_superuser :
+        #    obj = None
+       #     obj1 = None
+      #args = {'obj' : obj, 'obj1' : obj1}
+      return render(request,'selectedstudents.html',context)
+    
+def UpdateProfile(request , pk , pk2):
+    
+    candidate1 = get_object_or_404(candidate, pk=pk)
+    form = UpdateCandidateDetail(instance=candidate1)
+
+    if request.method == 'POST':
+        form = UpdateCandidateDetail(instance=candidate1, data=request.POST)
+        if form.is_valid():
+            form.save()
+        return HttpResponseRedirect(reverse('portal'))
+
+    return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
     
 class AnnouncementDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = PrivateAnnouncement
