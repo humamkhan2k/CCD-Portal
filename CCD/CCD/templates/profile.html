@@ -8,7 +8,7 @@
     </nav>
 </header>
 <br>
-<p align="center" ><font size="7">User Details</font></p>
+<p align="center" ><font size="7" color="#f5f5f5">User Details</font></p>
 <br>
 <table>
         <thead>
@@ -20,27 +20,27 @@
         </thead>
         <tbody>
         <tr>
-            <td class="column1"><font size="5">POC Name</font></td>
-            <td class="column2"><font size="5">:</font></td>
-            <td class="column3"><font size="5">{{ obj.user.username }}</font></td>
+            <td class="column1">POC Name</td>
+            <td class="column2">:</td>
+            <td class="column3">{{ obj.user.username }}</td>
         </tr>
         <tr>
-            <td class="column1"><font size="5">Company</font></td>
-            <td class="column2"><font size="5">:</font></td>
-            <td class="column3"><font size="5">{{ obj.company }}</font></td>
+            <td class="column1">Company</td>
+            <td class="column2">:</td>
+            <td class="column3">{{ obj.company }}</td>
         </tr>
         <tr>
-            <td class="column1"><font size="5">Email</font></td>
-            <td class="column2"><font size="5">:</font></td>
-            <td class="column3"><font size="5">{{ obj.email }}</font></td>
+            <td class="column1">Email</td>
+            <td class="column2">:</td>
+            <td class="column3">{{ obj.email }}</td>
         </tr>
         <tr>
-            <td class="column1"><font size="5">Phone Number</font></td>
-            <td class="column2"><font size="5">:</font></td>
+            <td class="column1">Phone Number</td>
+            <td class="column2">:</td>
             {% if obj.Phone_number != 0 %}
-            <td class="column3"><font size="5">{{ obj.Phone_number}}</font></td>
+            <td class="column3">{{ obj.Phone_number}}</td>
             {% else %}
-            <td><font size="5">NOT AVAILABLE</font></td>
+            <td>NOT AVAILABLE</td>
             {% endif %}
         </tr>
         </tbody>
