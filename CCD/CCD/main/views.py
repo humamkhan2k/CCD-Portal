@@ -11,7 +11,7 @@ from .models import *
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView , DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from . import models
+from django.utils import timezone
 # Create your views here.
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -70,6 +70,8 @@ class StudentsAnnouncementview(LoginRequiredMixin,CreateView):
           self.object = form.save(commit=False)
           obj = UserProfile.objects.get(user=self.request.user)
           self.object.user = obj
+          obj1 = candidate.objects.get(roll_number=self.object.rollnumber)
+          self.object.student = obj1.candidate_name
           self.object.save()
           return HttpResponseRedirect(reverse('portal'))
      
@@ -109,9 +111,9 @@ def studentprofile(request,pk):
 def selectedstudents(request , **kwargs):
     context = {}
     pk = kwargs['pk']
-
+    print("hi",pk)
     try:
-        poc = get_object_or_404( models.UserProfile , pk = pk )
+        poc = get_object_or_404(UserProfile , pk = pk )
         company = poc.company
         context['shortlist'] = company.shortlist_candidate.all().filter( is_selected = False)
         print(context['shortlist'])
@@ -122,8 +124,7 @@ def selectedstudents(request , **kwargs):
         pass  
     return render(request, 'selectedstudents.html' , context)
     
-def UpdateProfile(request , pk , pk2):
-    
+def UpdateProfile(request , pk , pk2):  
     candidate1 = get_object_or_404(candidate, pk=pk)
     form = UpdateCandidateDetail(instance=candidate1)
     user = request.user
@@ -132,29 +133,28 @@ def UpdateProfile(request , pk , pk2):
     if request.method == 'POST':
         form = UpdateCandidateDetail(instance=candidate1, data=request.POST)
         if form.is_valid():
-            candidate1.start_time = form.cleaned_data.get('start_time')
+            candidate1.start_time=timezone.now()
+            print(candidate1.start_time)
             candidate1.expected_time = form.cleaned_data.get('expected_time')
             candidate1.company_name = comp
             candidate1.is_selected = form.cleaned_data.get('is_selected')
-            candidate1.is_interview = form.cleaned_data.get('is_interview')
+            candidate1.is_interview = True
             candidate1.save()
+            if(candidate1.is_selected):
+              x = Confirm(cand = candidate1,confirm1='0')
+              x.save()
         return selectedstudents(request,pk=pk2)
     return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
     
 
-def ResetProfile(request , pk , pk2):
-    
-    candidate1 = get_object_or_404(candidate, pk=pk)
-    form = UpdateCandidateDetail(instance=candidate1)
-
-    if request.method == 'POST':
-        form = UpdateCandidateDetail(instance=candidate1, data=request.POST)
-        if form.is_valid():
-            form.save()
-        return HttpResponseRedirect(reverse('portal'))
-
-    return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
-    
+def ResetProfile(request, pk, pk2):
+  candidate1 = get_object_or_404(candidate, pk=pk)
+  candidate1.is_interview = False
+  candidate1.start_time = None
+  candidate1.expected_time = ""
+  candidate1.company_name = ""
+  candidate1.save()
+  return selectedstudents(request,pk=pk2)
 
 class AnnouncementDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = PrivateAnnouncement

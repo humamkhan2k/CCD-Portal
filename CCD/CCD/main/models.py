@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.shortcuts import reverse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 programme = (
         ('btech' , 'btech') ,
@@ -13,6 +15,15 @@ programme = (
         ('msr' , 'msr') ,
         ('ma' , 'ma') ,
 )    
+
+
+choices = (
+    ('1', 'Confirm'),
+    ('0', 'Not Confirm'),
+
+
+    )
+    
     
 class candidate(models.Model):
     candidate_name = models.CharField(max_length = 200 , blank = False)
@@ -20,17 +31,28 @@ class candidate(models.Model):
     Phone_number = models.IntegerField(default=0)
     is_selected = models.BooleanField(default = False)
     is_interview = models.BooleanField(default = False)
-    start_time = models.CharField(max_length = 200 , blank = True)
+    start_time = models.DateTimeField(null=True, blank=True)
     expected_time = models.CharField(max_length = 200 , blank = True)
     company_name = models.CharField(max_length = 200 , blank = True)
-
+    is_confirm = models.BooleanField(default = False)
     
     def get_absolute_url(self):
         return reverse('home')
     
     def __str__(self):
         return self.candidate_name
-    
+ 
+class Confirm(models.Model):
+    cand = models.OneToOneField(candidate, on_delete=models.CASCADE)
+    confirm1 = models.CharField(max_length = 20, choices = choices, default = '0')
+
+
+@receiver(post_save,sender=Confirm)
+def confirms(sender,instance,**kwargs):
+    if (instance.confirm1 == '1'):
+        instance.cand.is_confirm = True
+        instance.cand.save()
+ 
 class eligible(models.Model):
     cpi = models.CharField(max_length=100 , blank = True)
     major = models.CharField(max_length=100 , blank = True)

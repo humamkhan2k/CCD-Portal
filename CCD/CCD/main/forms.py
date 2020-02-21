@@ -18,7 +18,7 @@ class ProfileForm(forms.ModelForm):
 class StudentsAnnouncementForm(forms.ModelForm):
     class Meta:
         model = StudentsAnnouncement
-        fields = ('student','rollnumber','Announcement')
+        fields = ('rollnumber','Announcement')
         
 class PrivateAnnouncementForm(forms.ModelForm):
     class Meta:
@@ -30,8 +30,7 @@ class UpdateCandidateDetail(forms.ModelForm):
     class Meta:
         model = candidate
         fields = [
-            'start_time',
+            
             'expected_time',
             'is_selected',
-            'is_interview',
         ]
