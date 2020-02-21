@@ -11,6 +11,7 @@ from .models import StudentsAnnouncement,UserProfile, User, PrivateAnnouncement,
 from django.urls import reverse_lazy,reverse
 from django.views.generic import CreateView , DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from . import models
 # Create your views here.
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -105,24 +106,33 @@ def studentprofile(request,pk):
       return render(request,'studentprofile.html',args)
 
 @login_required
-def selectedstudents(request,pk):
-      context = {}
-      try:
-          poc = UserProfile.objects.get(pk=pk)
-          company = poc.company
-          context['shortlist'] = company.shortlist_candidate.all().filter( is_selected = False)
-          context['waitlist'] = company.waiting_candidate.all().filter( is_selected = False)
-          context['poc'] = poc
-          context['id'] = pk
-      except:
-          context={}
-      #if request.user.is_superuser :
-        #    obj = None
-       #     obj1 = None
-      #args = {'obj' : obj, 'obj1' : obj1}
-      return render(request,'selectedstudents.html',context)
+def selectedstudents(request , pk):
+    context = {}
+    try:
+        poc = get_object_or_404( models.UserProfile , pk = pk )
+        company = poc.company
+        context['shortlist'] = company.shortlist_candidate.all().filter( is_selected = False)
+        context['waitlist'] = company.waiting_candidate.all().filter( is_selected = False)
+        context['poc'] = poc
+        context['id'] = pk
+    except:
+        context={}    
+    return render(request, 'selectedstudents.html' , context)
     
 def UpdateProfile(request , pk , pk2):
+    
+    candidate1 = get_object_or_404(candidate, pk=pk)
+    form = UpdateCandidateDetail(instance=candidate1)
+
+    if request.method == 'POST':
+        form = UpdateCandidateDetail(instance=candidate1, data=request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(selectedstudents, pk=pk2)
+    return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
+    
+
+def ResetProfile(request , pk , pk2):
     
     candidate1 = get_object_or_404(candidate, pk=pk)
     form = UpdateCandidateDetail(instance=candidate1)
@@ -135,6 +145,7 @@ def UpdateProfile(request , pk , pk2):
 
     return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
     
+
 class AnnouncementDeleteView(LoginRequiredMixin,UserPassesTestMixin, DeleteView):
     model = PrivateAnnouncement
     template_name = 'privateannouncement_confirm_delete.html'

@@ -13,6 +13,7 @@
         <thead>
           <tr class="table100-head">
             <th class="column1">Name</th>
+            <th class="column2">Roll Number</th>
             <th class="column2">Company</th>
             <th class="column3">Entry Time</th>
             <th class="column4">Expected Time</th>
@@ -20,18 +21,20 @@
           </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% if shortlist %}
             {% for candidate in shortlist %}
+            <tr>
              {% if candidate.is_interview == True %}
              <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% else %}
              <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% endif %}
-            <td class="column2"></td>
-            <td class="column3"></td>
-            <td class="column4"></td>
-            <td class="column5"><a href="{% url 'Update-Profile' candidate.id poc.id%}"> Submit </a><td>
+            <td class="column2">{{candidate.roll_number}}</td>
+            <td class="column2">{{candidate.company_name}}</td>
+            <td class="column3">{{candidate.start_time}}</td>
+            <td class="column4">{{candidate.expected_time}}</td>
+            <td class="column6"><a href="{% url 'Update-Profile' candidate.id id %}"> Submit </a></td>
             {% endfor %}
             {% endif %}
         </tr>
@@ -43,26 +46,29 @@
 <table>
         <thead>
           <tr class="table100-head">
-            <th class="column1"></th>
-            <th class="column2"></th>
-            <th class="column3"></th>
-            <th class="column4"></th>
+            <th class="column1">Name</th>
+            <th class="column2">Roll Number</th>
+            <th class="column2">Company Name</th>
+            <th class="column3">Entry Time</th>
+            <th class="column4">Expected Time</th>
             <th class="column5"></th>
           </tr>
         </thead>
         <tbody>
-        <tr>
+        
             {% if waitlist %}
             {% for candidate in waitlist %}
+            <tr>
              {% if candidate.is_interview == True %}
              <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% else %}
              <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% endif %}
-            <td class="column2"></td>
-            <td class="column3"></td>
-            <td class="column4"></td>
-            <td class="column5"><a href="{% url 'Update-Profile' candidate.id poc.id %}"> Submit </a></td>
+            <td class="column2">{{candidate.roll_number}}</td>
+            <td class="column2">{{candidate.company_name}} </td>
+            <td class="column3">{{candidate.start_time}}</td>
+            <td class="column4">{{candidate.expected_time}}</td>
+            <td class="column5"><a href="{% url 'Update-Profile' candidate.id id %}"> Submit </a></td>
             {% endfor %}
             {% endif %}
         </tr>

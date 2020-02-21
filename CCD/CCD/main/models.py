@@ -45,7 +45,7 @@ class company(models.Model):
     cpoc_contact = models.CharField(max_length = 200 , blank = False)
     eligibility_criteria = models.ManyToManyField(eligible , related_name = 'eligible_companies',blank=True )
     waiting_candidate = models.ManyToManyField(candidate, related_name = 'waiting_person' , blank = True)
-    shortlist_candidate = models.ManyToManyField(candidate, related_name = 'shortlist_person' , blank = True)
+    shortlist_candidate = models.ManyToManyField(candidate, related_name = 'shortlist_person' , blank=True)
     all_candidate = models.ManyToManyField(candidate, related_name = 'all_person', blank = True)
 
     def __str__(self):
