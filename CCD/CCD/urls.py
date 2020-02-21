@@ -31,6 +31,7 @@ urlpatterns = [
     path('portal/<int:pk>/studentprofile/', core_views.studentprofile, name='student-profile'),
     path('portal/<int:pk>/selectedstudents/', core_views.selectedstudents, name='selected-students'),
     path('portal/<int:pk>/<int:pk2>/updateprofile', core_views.UpdateProfile, name='Update-Profile'),
+    path('portal/<int:pk>/<int:pk2>/resetprofile', core_views.ResetProfile, name='Reset-Profile'),
     url(r'^$', core_views.home, name='home'),
     url(r'^login/$', LoginView.as_view(template_name='login.html'), name='login'),
     url(r'^portal/$', core_views.portal, name='portal'),

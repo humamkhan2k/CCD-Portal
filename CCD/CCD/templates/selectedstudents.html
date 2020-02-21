@@ -7,7 +7,8 @@
         </div>
     </nav>
 </header>
-<p align="center" ><font size="7">Short Students</font></p>
+<br><br>
+<p align="center" ><font size="7"><i>Shortlisted Students</i></font></p>
 <br>
 <table>
         <thead>
@@ -24,23 +25,40 @@
         
             {% if shortlist %}
             {% for candidate in shortlist %}
+            {% if candidate.is_confirm == False %}
             <tr>
-             {% if candidate.is_interview == True %}
-             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             
+             {% if candidate.is_selected == True %}
+             <td class="column1" style = "background-color:green"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% elif candidate.is_interview == True %}
+             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td> 
              {% else %}
              <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% endif %}
             <td class="column2">{{candidate.roll_number}}</td>
             <td class="column2">{{candidate.company_name}}</td>
-            <td class="column3">{{candidate.start_time}}</td>
+            <td class="column3">{{candidate.start_time|date:"h:i A"}}</td>
             <td class="column4">{{candidate.expected_time}}</td>
+            {% if candidate.is_selected == False %}
+            {% if candidate.is_interview == False %}
             <td class="column6"><a href="{% url 'Update-Profile' candidate.id id %}"> Submit </a></td>
-            {% endfor %}
+            {% else %}
+            {% if candidate.company_name == poc.company.company_name %}
+            <td class="column6"><a href="{% url 'Reset-Profile' candidate.id id %}">Reset</a></td>
             {% endif %}
+            {% endif %}
+            {% endif %}
+            
+            
+            
+            
         </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
         </tbody>
 </table>
-<br>
+<br><br><br><br>
 <p align="center" ><font size="7">Waiting List</font></p>
 <br>
 <table>
@@ -59,17 +77,30 @@
             {% if waitlist %}
             {% for candidate in waitlist %}
             <tr>
-             {% if candidate.is_interview == True %}
-             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% if candidate.is_confirm == False %}
+             {% if candidate.is_selected == True %}
+             <td class="column1" style = "background-color:green"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             {% elif candidate.is_interview == True %}
+             <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td> 
              {% else %}
              <td class="column1"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
              {% endif %}
             <td class="column2">{{candidate.roll_number}}</td>
             <td class="column2">{{candidate.company_name}} </td>
-            <td class="column3">{{candidate.start_time}}</td>
+            <td class="column3">{{candidate.start_time|date:"h:i A"}}</td>
             <td class="column4">{{candidate.expected_time}}</td>
-            <td class="column5"><a href="{% url 'Update-Profile' candidate.id id %}"> Submit </a></td>
+            {% if candidate.is_selected == False %}
+            {% if candidate.is_interview == False %}
+            <td class="column6"><a href="{% url 'Update-Profile' candidate.id id %}"> Submit </a></td>
+            {% else %}
+            {% if candidate.company_name == poc.company.company_name %}
+            <td class="column6"><a href="{% url 'Reset-Profile' candidate.id id %}">Reset</a></td>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            {% endif %}
             {% endfor %}
+            
             {% endif %}
         </tr>
         </tbody>
