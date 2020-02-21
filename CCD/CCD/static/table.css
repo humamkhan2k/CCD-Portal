@@ -146,19 +146,49 @@ tbody tr:hover {
     left: 30px;
     top: 0;
   }
-  table tbody tr td:nth-child(1):before {
-    content: "POC Name";
+
+  table.studentList tbody tr td:nth-child(1):before {
+    content: "Name";
   }
-  table tbody tr td:nth-child(2):before {
-    content: "Company Name";
+  table.studentList tbody tr td:nth-child(2):before {
+    content: "Roll Number";
   }
-  table tbody tr td:nth-child(3):before {
-    content: "Announcement";
+  table.studentList tbody tr td:nth-child(3):before {
+    content: "Company";
   }
-  table tbody tr td:nth-child(4):before {
-    content: "Announcement Time";
+  table.studentList tbody tr td:nth-child(4):before {
+    content: "Entry Time";
   }
 
+  table.studentList tbody tr td:nth-child(5):before {
+    content: "Expected Time";
+  }
+
+  table.Annoncement tbody tr td:nth-child(1):before {
+    content: "POC Name";
+  }
+  table.Annoncement tbody tr td:nth-child(2):before {
+    content: "Company Name";
+  }
+  table.Annoncement tbody tr td:nth-child(3):before {
+    content: "Annoncement";
+  }
+  table.Annoncement tbody tr td:nth-child(4):before {
+    content: "Annoncement Time";
+  }
+
+  table.studAnnounce tbody tr td:nth-child(1):before {
+    content: "Student Name";
+  }
+  table.studAnnounce tbody tr td:nth-child(2):before {
+    content: "Roll Number";
+  }
+  table.studAnnounce tbody tr td:nth-child(3):before {
+    content: "Annoncement";
+  }
+  table.studAnnounce tbody tr td:nth-child(4):before {
+    content: "Call Time";
+  }
 
   .column4,
   .column1,

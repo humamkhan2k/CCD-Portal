@@ -2,6 +2,13 @@
 {% load static%}
 {% block content %}
   <!-- main -->
+  <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+       <div class="navbar-nav navbar-right">
+            <a class="navbar-brand mr-4" href="{% url 'home' %}">Back</a>
+        </div>
+    </nav>
+</header>
   <div class="main-w3layouts wrapper">
     <img src="{% static 'IITGlogo.gif' %}" alt="IITG Logo" style="width:10%;" >
     <div class="main-agileinfo">
