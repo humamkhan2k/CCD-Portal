@@ -115,15 +115,16 @@ def selectedstudents(request , **kwargs):
     try:
         poc = get_object_or_404(UserProfile , pk = pk )
         company = poc.company
-        context['shortlist'] = company.shortlist_candidate.all().filter( is_selected = False)
+        context['shortlist'] = company.shortlist_candidate.all().filter( is_confirm = False)
         print(context['shortlist'])
-        context['waitlist'] = company.waiting_candidate.all().filter( is_selected = False)
+        context['waitlist'] = company.waiting_candidate.all().filter( is_confirm = False)
         context['poc'] = poc
         context['id'] = pk
     except:
         pass  
     return render(request, 'selectedstudents.html' , context)
-    
+ 
+@login_required    
 def UpdateProfile(request , pk , pk2):  
     candidate1 = get_object_or_404(candidate, pk=pk)
     form = UpdateCandidateDetail(instance=candidate1)
@@ -146,7 +147,7 @@ def UpdateProfile(request , pk , pk2):
         return selectedstudents(request,pk=pk2)
     return render(request, 'UpdateCandidateDetail.html', {'form':form, 'patient':candidate})
     
-
+@login_required
 def ResetProfile(request, pk, pk2):
   candidate1 = get_object_or_404(candidate, pk=pk)
   candidate1.is_interview = False

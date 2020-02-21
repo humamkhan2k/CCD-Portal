@@ -29,7 +29,7 @@
             <tr>
              
              {% if candidate.is_selected == True %}
-             <td class="column1" style = "background-color:green"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             <td class="column1" style = "background-color:limegreen;"><a href="{% url 'student-profile' candidate.id %}" style="color:#000">{{ candidate.candidate_name }}</td>
              {% elif candidate.is_interview == True %}
              <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td> 
              {% else %}
@@ -79,7 +79,7 @@
             <tr>
              {% if candidate.is_confirm == False %}
              {% if candidate.is_selected == True %}
-             <td class="column1" style = "background-color:green"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td>
+             <td class="column1" style = "background-color:limegreen"><a href="{% url 'student-profile' candidate.id %}" style="color:#000">{{ candidate.candidate_name }}</td>
              {% elif candidate.is_interview == True %}
              <td class="column1" style = "background-color:yellow"><a href="{% url 'student-profile' candidate.id %}">{{ candidate.candidate_name }}</td> 
              {% else %}
