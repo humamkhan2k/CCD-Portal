@@ -15,14 +15,15 @@ programme = (
 )    
     
 class candidate(models.Model):
-    start_time = models.CharField(max_length = 200 , blank = True)
-    expected_time = models.CharField(max_length = 200 , blank = True)
     candidate_name = models.CharField(max_length = 200 , blank = False)
-    company_name = models.CharField(max_length = 200 , blank = True)
     roll_number = models.CharField(max_length=50)
     Phone_number = models.IntegerField(default=0)
     is_selected = models.BooleanField(default = False)
     is_interview = models.BooleanField(default = False)
+    start_time = models.CharField(max_length = 200 , blank = True)
+    expected_time = models.CharField(max_length = 200 , blank = True)
+    company_name = models.CharField(max_length = 200 , blank = True)
+
     
     def get_absolute_url(self):
         return reverse('home')

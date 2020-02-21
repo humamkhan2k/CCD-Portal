@@ -26,12 +26,12 @@ class PrivateAnnouncementForm(forms.ModelForm):
         fields = ('Announcement',)
         
 class UpdateCandidateDetail(forms.ModelForm):
+
     class Meta:
         model = candidate
         fields = [
             'start_time',
             'expected_time',
-            'company_name',
             'is_selected',
             'is_interview',
         ]
